@@ -441,7 +441,8 @@ openByGet();
 </p>
 <p>零件與組立件考試題目以 NX 繪圖操作過程影片如下:</p>
 <p style="padding-left: 30px;">請將操作影片嵌入 ......</p>
-<p style="padding-left: 30px;">所完成的零件與組立件檔案下載</p><h1>HW3</h1>
+<p style="padding-left: 30px;">所完成的零件與組立件檔案下載</p>
+<h1>HW3</h1>
 <p>Homework 3 (20%):</p>
 <p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/BonW.html">Balance on Wheels</a> 控制系統設計模擬場景</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/Balance_On_Wheels">https://github.com/mdecycu/Balance_On_Wheels</a></p>
@@ -551,7 +552,8 @@ function openByGet(){
 openByGet();
 </script>
 </p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></p><h1>HW4</h1>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></p>
+<h1>HW4</h1>
 <p>Homework 4 (20%):</p>
 <p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/Quadruped.html">Dingo 機器狗</a>控制系統設計模擬場景</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/DingoQuadruped">https://github.com/mdecycu/DingoQuadruped</a></p>
@@ -573,10 +575,66 @@ openByGet();
 <p style="padding-left: 30px;"></p>
 <p style="padding-left: 30px;">所完成的模擬場景與控制程式檔案下載</p>
 <p style="padding-left: 30px;"><a href="/downloads/41223202_w16_exam3.7z">41223202_w16_exam3.7z</a></p>
-<h1>Pinball</h1>
+<br/><br/><br/><br/>Pinball
 <p>檔案:<a href="/downloads/彈珠檯.ttt">彈珠檯.ttt</a></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="360" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/M6BdmBDWxd0" title="國立虎尾科技大學機械設計工程系 - 電腦輔助設計與實習 - Pinball：41223202" width="640"></iframe></p>
-<p></p><h1>Final Report</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install pyzmwswswswsq cbor keyboard
+from coppeliasim_zmqremoteapi_client import RemoteAPIClient
+import keyboard
+ 
+# Connecting to the CoppeliaSim server
+client = RemoteAPIClient('localhost', 23000)
+ 
+print('Program started')
+sim = client.getObject('sim')
+ 
+# Get the handle for the slider (prismatic joint)
+slider = sim.getObject('/P_joint')
+cw= sim.getObject('/Prismatic1_joint')
+ccw= sim.getObject('/Prismatic2_joint')
+
+# Starting the simulation
+sim.startSimulation()
+print('Simulation started')
+ 
+# Main control loop
+def main():
+    # Keep running until simulation is stoppedwswswswsws
+    while True:
+        if keyboard.is_pressed('w'):  # Move slider to -0.15 position
+            print("w is pressed")
+            sim.setJointTargetPosition(slider, 0.3)
+         
+        if keyboard.is_pressed('s'):  # Reset slider to the original position
+            print("s is pressed")
+            sim.setJointTargetPosition(slider,-0.1)  # Reset to the initial position
+            
+        if keyboard.is_pressed('p'):  # Move slider to -0.15 position
+            print("p is pressed")
+            sim.setJointTargetPosition(cw, -0.25)
+        
+        if keyboard.is_pressed('l'):  # Reset slider to the original position
+            print("l is pressed")
+            sim.setJointTargetPosition(cw, 0.0)  # Reset to the initial position
+            
+        if keyboard.is_pressed('e'):  # Move slider to -0.15 position
+            print("w is pressed")
+            sim.setJointTargetPosition(ccw, -0.28)
+        
+        if keyboard.is_pressed('d'):  # Reset slider to the original position
+            print("s is pressed")
+            sim.setJointTargetPosition(ccw, 0.0)  # Reset to the initial position
+
+        if keyboard.is_pressed('q'):  # Stop the simulation when 'q' is pressed
+            print("t is pressed - stopping simulation")
+            sim.stopSimulation()
+            break
+ 
+# Start the main control loop
+main()
+</pre>
+<p><br/><br/></p>
+<h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (30%)</p>
 <p>期末口頭專題報告影片:</p>
 <p style="padding-left: 30px;">......</p>
